@@ -1,0 +1,77 @@
+.admin-container {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  max-width: 500px;
+  margin: 2rem auto;
+  font-family: "Poppins", sans-serif;
+}
+
+.admin-title {
+  text-align: center;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.admin-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.admin-input {
+  flex: 1;
+  padding: 0.6rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.admin-input:focus {
+  border-color: #007bff;
+}
+
+.admin-btn {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.admin-btn:hover {
+  background: #0056b3;
+}
+
+.admin-list {
+  list-style: none;
+  padding: 0;
+}
+
+.admin-item {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.delete-btn {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.delete-btn:hover {
+  background: #b02a37;
+}

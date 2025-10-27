@@ -1,25 +1,39 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./Pages";              // ✅ karena ada Pages/index.jsx
-import Book from "./Pages/Book";         // ✅ karena ada Book/index.jsx
-import Contact from "./Pages/Contact";   // ✅ karena ada Contact/index.jsx
-import Features from "./Pages/Features"; // ✅ ini file Features.jsx
-import FAQs from "./Pages/FAQs";         // ✅ ini file FAQs.jsx
-import About from "./Pages/About";       // ✅ ini file About.jsx
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+// Halaman Utama
+import Home from "./Pages";
+import Book from "./Pages/Book";
+import Contact from "./Pages/Contact";
+import Features from "./Pages/Features";
+import FAQs from "./Pages/FAQs";
+import About from "./Pages/About";
+import Team from "./Pages/Team";
 import LoginForm from "./components/shared/LoginForm";
-import Team from "./Pages/Team";         // ✅ karena ada Team/index.jsx
+
+// Komponen dan Halaman Admin
+import AdminLayout from "./components/AdminLayout";
+import AdminGenre from "./Pages/AdminGenre";
+import AdminAuthor from "./Pages/AdminAuthor";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<Home />} />
-        <Route path="book" element={<Book />} />
-        <Route path="contact" element={<Contact />} />
-        <Route path="features" element={<Features />} />
-        <Route path="faqs" element={<FAQs />} />
-        <Route path="about" element={<About />} />
-        <Route path="login" element={<LoginForm />} />
-        <Route path="team" element={<Team />} />
+        {/* ====== Halaman Utama ====== */}
+        <Route path="/" element={<Home />} />
+        <Route path="/book" element={<Book />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/features" element={<Features />} />
+        <Route path="/faqs" element={<FAQs />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/team" element={<Team />} />
+        <Route path="/login" element={<LoginForm />} />
+
+        {/* ====== Halaman Admin ====== */}
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route path="genre" element={<AdminGenre />} />
+          <Route path="author" element={<AdminAuthor />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
