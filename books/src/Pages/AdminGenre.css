@@ -1,77 +1,72 @@
 .admin-container {
-  background: #ffffff;
-  padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  max-width: 500px;
-  margin: 2rem auto;
-  font-family: "Poppins", sans-serif;
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-.admin-title {
+h2 {
   text-align: center;
-  color: #333;
-  margin-bottom: 1.5rem;
+  margin-bottom: 20px;
 }
 
-.admin-form {
+.form-group {
   display: flex;
   gap: 10px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 20px;
 }
 
-.admin-input {
+.form-group input {
   flex: 1;
-  padding: 0.6rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
   outline: none;
-  transition: 0.2s;
 }
 
-.admin-input:focus {
-  border-color: #007bff;
-}
-
-.admin-btn {
-  background: #007bff;
-  color: #fff;
-  border: none;
-  padding: 0.6rem 1rem;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.admin-btn:hover {
-  background: #0056b3;
-}
-
-.admin-list {
-  list-style: none;
-  padding: 0;
-}
-
-.admin-item {
-  background: #f8f9fa;
-  border-radius: 8px;
-  padding: 0.7rem 1rem;
-  margin-bottom: 8px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.delete-btn {
-  background: #dc3545;
+.form-group button {
+  background-color: #007bff;
   color: white;
   border: none;
-  padding: 0.3rem 0.6rem;
-  border-radius: 5px;
+  border-radius: 6px;
+  padding: 8px 16px;
   cursor: pointer;
-  font-size: 0.85rem;
 }
 
-.delete-btn:hover {
-  background: #b02a37;
+.form-group button:hover {
+  background-color: #0056b3;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+button {
+  margin: 0 5px;
+  cursor: pointer;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+button:nth-child(1) {
+  background-color: #28a745;
+  color: white;
+}
+
+button:nth-child(2) {
+  background-color: #dc3545;
+  color: white;
 }

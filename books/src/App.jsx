@@ -28,6 +28,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/team" element={<Team />} />
         <Route path="/login" element={<LoginForm />} />
+      
 
         {/* ====== Halaman Admin ====== */}
         <Route path="/admin" element={<AdminLayout />}>
