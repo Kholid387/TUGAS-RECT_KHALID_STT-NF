@@ -1,72 +1,143 @@
+/* ======= AdminGenre.css ======= */
+
 .admin-container {
-  padding: 20px;
   max-width: 800px;
-  margin: auto;
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  margin: 50px auto;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  padding: 30px;
+  text-align: center;
+  font-family:'Times New Roman', Times, serif;
 }
 
 h2 {
-  text-align: center;
-  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.sub-title {
+  color: #555;
+  font-size: 18px;
+  margin-bottom: 25px;
 }
 
 .form-group {
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .form-group input {
-  flex: 1;
-  padding: 8px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+  padding: 10px 15px;
+  width: 60%;
+  border: 2px solid #ddd;
+  border-radius: 8px;
   outline: none;
+  transition: 0.3s;
+  font-size: 15px;
 }
 
-.form-group button {
-  background-color: #007bff;
+.form-group input:focus {
+  border-color: #6a11cb;
+  box-shadow: 0 0 5px rgba(106, 17, 203, 0.4);
+}
+
+.admin-btn.add {
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
   color: white;
   border: none;
-  border-radius: 6px;
-  padding: 8px 16px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
   cursor: pointer;
+  transition: 0.3s;
 }
 
-.form-group button:hover {
-  background-color: #0056b3;
+.admin-btn.add:hover {
+  opacity: 0.9;
+  transform: scale(1.03);
 }
 
+/* ======= Tabel ======= */
 table {
   width: 100%;
   border-collapse: collapse;
+  margin-top: 10px;
 }
 
-table th,
-table td {
-  border: 1px solid #ccc;
-  padding: 8px;
+th, td {
+  padding: 12px 15px;
   text-align: center;
+  border-bottom: 1px solid #ddd;
 }
 
-button {
-  margin: 0 5px;
-  cursor: pointer;
+th {
+  background: #f5f5f5;
+  color: #333;
+  font-weight: 600;
+}
+
+td input {
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 80%;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* ======= Tombol Aksi ======= */
+.admin-btn.edit,
+.admin-btn.save,
+.delete-btn {
   border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-}
-
-button:hover {
-  opacity: 0.8;
-}
-
-button:nth-child(1) {
-  background-color: #28a745;
   color: white;
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-button:nth-child(2) {
-  background-color: #dc3545;
-  color: white;
+.admin-btn.edit {
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+}
+
+.admin-btn.save {
+  background: linear-gradient(90deg, #43e97b, #38f9d7);
+}
+
+.delete-btn {
+  background: linear-gradient(90deg, #ff416c, #ff4b2b);
+}
+
+.admin-btn.edit:hover,
+.admin-btn.save:hover,
+.delete-btn:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+/* ======= Responsif ======= */
+@media (max-width: 600px) {
+  .form-group {
+    flex-direction: column;
+  }
+
+  .form-group input {
+    width: 100%;
+  }
+
+  table {
+    font-size: 14px;
+  }
 }

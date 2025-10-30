@@ -1,44 +1,38 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./LoginForm.css";
 
 function LoginForm() {
-  // Menyimpan data input pengguna
-  const [form, setForm] = useState({
-    username: "",
-    email: "",
-    password: "",
-  });
+  // Menyimpan data input user
+  const [user, setUser] = useState({ username: "", password: "" });
+  const [error, setError] = useState(""); // Menyimpan pesan error
+  const navigate = useNavigate(); // Untuk pindah halaman setelah login
 
-  // Menyimpan pesan error / hasil login
-  const [pesan, setPesan] = useState("");
-
-  // Fungsi untuk memperbarui nilai input ketika diketik
+  // Saat input berubah
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm({ ...form, [name]: value });
+    setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-  // Fungsi saat tombol login ditekan
+  // Saat tombol login diklik
   const handleSubmit = (e) => {
     e.preventDefault();
 
     // Validasi sederhana
-    if (!form.username || !form.email || !form.password) {
-      setPesan("Semua kolom wajib diisi!");
+    if (!user.username || !user.password) {
+      setError("Semua kolom wajib diisi!");
       return;
     }
 
-    if (!/\S+@\S+\.\S+/.test(form.email)) {
-      setPesan("Format email tidak valid!");
-      return;
+    // Simulasi login (ganti nanti dengan backend API)
+    if (user.username === "admin" && user.password === "123456") {
+      localStorage.setItem("role", "admin");
+      navigate("/admin"); // ke halaman admin
+    } else if (user.username === "user" && user.password === "12345") {
+      localStorage.setItem("role", "user");
+      navigate("/"); // ke halaman utama
+    } else {
+      setError("Username atau password salah!");
     }
-
-    // Jika semua benar
-    console.log("Data login:", form);
-    setPesan("Login berhasil! Selamat datang 😊");
-
-    // Kosongkan input
-    setForm({ username: "", email: "", password: "" });
   };
 
   return (
@@ -53,21 +47,9 @@ function LoginForm() {
             <input
               type="text"
               name="username"
-              value={form.username}
+              placeholder="Masukkan username"
+              value={user.username}
               onChange={handleChange}
-              placeholder="Masukkan username Anda"
-            />
-          </div>
-
-          {/* Input Email */}
-          <div className="input-group">
-            <label>Email</label>
-            <input
-              type="email"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              placeholder="Masukkan email Anda"
             />
           </div>
 
@@ -77,9 +59,9 @@ function LoginForm() {
             <input
               type="password"
               name="password"
-              value={form.password}
+              placeholder="Masukkan password"
+              value={user.password}
               onChange={handleChange}
-              placeholder="Masukkan password Anda"
             />
           </div>
 
@@ -89,10 +71,10 @@ function LoginForm() {
           </button>
         </form>
 
-        {/* Pesan hasil login */}
-        {pesan && <p className="message">{pesan}</p>}
+        {/* Pesan error */}
+        {error && <p className="error">{error}</p>}
 
-        {/* Link ke halaman register */}
+        {/* Link ke halaman Register */}
         <p className="register-link">
           Belum punya akun? <a href="/register">Daftar Sekarang</a>
         </p>

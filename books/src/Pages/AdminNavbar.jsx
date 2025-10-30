@@ -5,7 +5,7 @@ const AdminNavbar = () => {
   return (
     <nav className="admin-navbar">
       <div className="admin-navbar-left">
-        <h2 className="logo">Admin Dashboard Khalid Shafwan</h2>
+        <h2 className="logo">📚 Admin Dashboard | Khalid Shafwan</h2>
       </div>
       <ul className="admin-navbar-links">
         <li>
@@ -15,7 +15,7 @@ const AdminNavbar = () => {
           <Link to="/admin/author">Author</Link>
         </li>
         <li>
-          <Link to="/">Kembali ke Home</Link>
+          <Link to="/">Home</Link>
         </li>
       </ul>
     </nav>

@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-// Halaman Utama
+// ===== Halaman Umum =====
 import Home from "./Pages";
 import Book from "./Pages/Book";
 import Contact from "./Pages/Contact";
@@ -9,18 +9,23 @@ import FAQs from "./Pages/FAQs";
 import About from "./Pages/About";
 import Team from "./Pages/Team";
 import LoginForm from "./components/shared/LoginForm";
-import Register from "./Pages/Register"; // ✅ import harus di sini
+import Register from "./Pages/Register";
 
-// Komponen dan Halaman Admin
+// ===== Halaman Admin =====
 import AdminLayout from "./components/AdminLayout";
 import AdminGenre from "./Pages/AdminGenre";
 import AdminAuthor from "./Pages/AdminAuthor";
+
+// ===== Komponen Proteksi =====
+import ProtectedRoute from "./components/shared/ProtectedRoute";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* ====== Halaman Utama ====== */}
+        {/* ===========================
+             HALAMAN UMUM
+        ============================ */}
         <Route path="/" element={<Home />} />
         <Route path="/book" element={<Book />} />
         <Route path="/contact" element={<Contact />} />
@@ -31,10 +36,31 @@ function App() {
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<Register />} />
 
-        {/* ====== Halaman Admin ====== */}
-        <Route path="/admin" element={<AdminLayout />}>
-          <Route path="genre" element={<AdminGenre />} />
-          <Route path="author" element={<AdminAuthor />} />
+        {/* HALAMAN ADMIN (PROTECTED) */}
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute requiredRole="admin">
+              <AdminLayout />
+            </ProtectedRoute>
+          }
+        >
+          <Route
+            path="genre"
+            element={
+              <ProtectedRoute requiredRole="admin">
+                <AdminGenre />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="author"
+            element={
+              <ProtectedRoute requiredRole="admin">
+                <AdminAuthor />
+              </ProtectedRoute>
+            }
+          />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -24,10 +24,12 @@ const AdminGenre = () => {
     }
   }, []);
 
+  // Simpan perubahan ke localStorage
   useEffect(() => {
     localStorage.setItem("genres", JSON.stringify(genres));
   }, [genres]);
 
+  // Tambah genre baru
   const handleAdd = (e) => {
     e.preventDefault();
     if (!newGenre.trim()) return;
@@ -35,16 +37,19 @@ const AdminGenre = () => {
     setNewGenre("");
   };
 
+  // Hapus genre
   const handleDelete = (index) => {
     const updated = genres.filter((_, i) => i !== index);
     setGenres(updated);
   };
 
+  // Edit genre
   const handleEdit = (index) => {
     setEditIndex(index);
     setEditValue(genres[index]);
   };
 
+  // Simpan hasil edit
   const handleUpdate = (index) => {
     if (!editValue.trim()) return;
     const updated = [...genres];
@@ -59,6 +64,7 @@ const AdminGenre = () => {
       <h2>Kelola Genre Buku</h2>
       <h3 className="sub-title">📖 Daftar Kategori Buku Berdasarkan Genre</h3>
 
+      {/* Form tambah genre */}
       <form onSubmit={handleAdd} className="form-group">
         <input
           type="text"
@@ -66,9 +72,10 @@ const AdminGenre = () => {
           value={newGenre}
           onChange={(e) => setNewGenre(e.target.value)}
         />
-        <button type="submit">Tambah</button>
+        <button type="submit" className="admin-btn add">Tambah</button>
       </form>
 
+      {/* Tabel genre */}
       <table>
         <thead>
           <tr>
@@ -94,12 +101,29 @@ const AdminGenre = () => {
                 )}
               </td>
               <td>
-                {editIndex === index ? (
-                  <button onClick={() => handleUpdate(index)}>Simpan</button>
-                ) : (
-                  <button onClick={() => handleEdit(index)}>Edit</button>
-                )}
-                <button onClick={() => handleDelete(index)}>Hapus</button>
+                <div className="action-buttons">
+                  {editIndex === index ? (
+                    <button
+                      className="admin-btn save"
+                      onClick={() => handleUpdate(index)}
+                    >
+                      Simpan
+                    </button>
+                  ) : (
+                    <button
+                      className="admin-btn edit"
+                      onClick={() => handleEdit(index)}
+                    >
+                      Edit
+                    </button>
+                  )}
+                  <button
+                    className="delete-btn"
+                    onClick={() => handleDelete(index)}
+                  >
+                    Hapus
+                  </button>
+                </div>
               </td>
             </tr>
           ))}

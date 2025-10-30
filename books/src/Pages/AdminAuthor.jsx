@@ -8,6 +8,7 @@ const AdminAuthor = () => {
   const [editIndex, setEditIndex] = useState(null);
   const [editValue, setEditValue] = useState("");
 
+  // Ambil data dari localStorage
   useEffect(() => {
     const stored = localStorage.getItem("authors");
     if (stored) {
@@ -24,10 +25,12 @@ const AdminAuthor = () => {
     }
   }, []);
 
+  
   useEffect(() => {
     localStorage.setItem("authors", JSON.stringify(authors));
   }, [authors]);
 
+  
   const handleAddAuthor = (e) => {
     e.preventDefault();
     if (!newAuthor.trim()) return;
@@ -35,11 +38,13 @@ const AdminAuthor = () => {
     setNewAuthor("");
   };
 
+ 
   const handleDelete = (index) => {
     const updated = authors.filter((_, i) => i !== index);
     setAuthors(updated);
   };
 
+  
   const handleEdit = (index) => {
     setEditIndex(index);
     setEditValue(authors[index]);
@@ -55,21 +60,25 @@ const AdminAuthor = () => {
   };
 
   return (
-    <div className="admin-container">
-      <h2>Daftar Penulis</h2>
-      <h3 className="sub-title">📚 Daftar Isi Buku Berdasarkan Penulis</h3>
+    <div className="admin-author-container">
+      <h2>📚 Daftar Buku Berdasarkan Penulis</h2>
 
-      <form onSubmit={handleAddAuthor} className="form-group">
+{/* Form tambah penulis */}
+      <form className="admin-form" onSubmit={handleAddAuthor}>
         <input
           type="text"
+          placeholder="Nama penulis baru..."
           value={newAuthor}
           onChange={(e) => setNewAuthor(e.target.value)}
-          placeholder="Nama penulis baru..."
+          className="admin-input"
         />
-        <button type="submit">Tambah</button>
+        <button type="submit" className="admin-btn add">
+          Tambah
+        </button>
       </form>
 
-      <table>
+     
+      <table className="admin-table">
         <thead>
           <tr>
             <th>No</th>
@@ -87,18 +96,39 @@ const AdminAuthor = () => {
                     type="text"
                     value={editValue}
                     onChange={(e) => setEditValue(e.target.value)}
+                    className="admin-input edit-mode"
                   />
                 ) : (
                   author
                 )}
               </td>
               <td>
-                {editIndex === index ? (
-                  <button onClick={() => handleUpdate(index)}>Simpan</button>
-                ) : (
-                  <button onClick={() => handleEdit(index)}>Edit</button>
-                )}
-                <button onClick={() => handleDelete(index)}>Hapus</button>
+                <div className="action-buttons">
+                  {editIndex === index ? (
+                    <button
+                      type="button"
+                      className="admin-btn save"
+                      onClick={() => handleUpdate(index)}
+                    >
+                      Simpan
+                    </button>
+                  ) : (
+                    <button
+                      type="button"
+                      className="admin-btn edit"
+                      onClick={() => handleEdit(index)}
+                    >
+                      Edit
+                    </button>
+                  )}
+                  <button
+                    type="button"
+                    className="delete-btn"
+                    onClick={() => handleDelete(index)}
+                  >
+                    Hapus
+                  </button>
+                </div>
               </td>
             </tr>
           ))}
