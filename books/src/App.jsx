@@ -9,6 +9,7 @@ import FAQs from "./Pages/FAQs";
 import About from "./Pages/About";
 import Team from "./Pages/Team";
 import LoginForm from "./components/shared/LoginForm";
+import Register from "./Pages/Register"; // ✅ import harus di sini
 
 // Komponen dan Halaman Admin
 import AdminLayout from "./components/AdminLayout";
@@ -28,7 +29,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/team" element={<Team />} />
         <Route path="/login" element={<LoginForm />} />
-      
+        <Route path="/register" element={<Register />} />
 
         {/* ====== Halaman Admin ====== */}
         <Route path="/admin" element={<AdminLayout />}>

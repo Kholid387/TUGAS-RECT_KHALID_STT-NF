@@ -1,30 +1,30 @@
 /* ==========================
-   Tampilan Umum
+   Tampilan Umum Halaman
 ========================== */
-.login-page {
+.register-page {
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #2575fc, #6a11cb);
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
   font-family: "Poppins", sans-serif;
 }
 
 /* ==========================
-   Kotak Login
+   Kotak Formulir
 ========================== */
-.login-box {
-  background: #ffffff;
+.register-box {
+  background: #fff;
   padding: 2.5rem;
   border-radius: 1.2rem;
   width: 100%;
-  max-width: 400px;
+  max-width: 420px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   text-align: center;
   animation: fadeIn 0.8s ease-in-out;
 }
 
-/* Animasi Muncul */
+/* Animasi muncul lembut */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -37,14 +37,14 @@
 }
 
 /* Judul */
-.login-box h2 {
+.register-box h2 {
   color: #333;
   margin-bottom: 1.5rem;
   font-weight: 600;
 }
 
 /* ==========================
-   Input Form
+   Input dan Label
 ========================== */
 .input-group {
   margin-bottom: 1.2rem;
@@ -67,16 +67,17 @@
   transition: 0.3s ease;
 }
 
+/* Efek ketika input difokuskan */
 .input-group input:focus {
-  border-color: #6a11cb;
+  border-color: #2575fc;
   outline: none;
-  box-shadow: 0 0 5px rgba(106, 17, 203, 0.4);
+  box-shadow: 0 0 5px rgba(37, 117, 252, 0.4);
 }
 
 /* ==========================
-   Tombol Login
+   Tombol
 ========================== */
-.btn-login {
+button {
   width: 100%;
   padding: 0.9rem;
   background: linear-gradient(135deg, #6a11cb, #2575fc);
@@ -88,35 +89,25 @@
   transition: 0.3s ease;
 }
 
-.btn-login:hover {
+button:hover {
   background: linear-gradient(135deg, #2575fc, #6a11cb);
   transform: translateY(-2px);
 }
 
 /* ==========================
-   Pesan dan Link Register
+   Pesan Error & Sukses
 ========================== */
-.message {
-  margin-top: 1rem;
+.error {
+  color: #d9534f;
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+}
+
+.success {
   color: #28a745;
+  margin-top: 1rem;
   font-weight: 500;
   background: #e9f9ee;
   padding: 0.7rem;
   border-radius: 6px;
-}
-
-.register-link {
-  margin-top: 1.5rem;
-  font-size: 0.9rem;
-  color: #555;
-}
-
-.register-link a {
-  color: #2575fc;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.register-link a:hover {
-  text-decoration: underline;
 }
